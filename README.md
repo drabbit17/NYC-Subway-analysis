@@ -2,9 +2,14 @@
 
 ## Introduction and data description
 
-The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are aggregated according to different sensors located within different Subway stations. The dataset also includes details regarding weather conditions. This makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf **turnstile-weather-variables**
+The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are aggregated according to different sensors located within different Subway stations. The dataset also includes details regarding weather conditions. This makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf file *turnstile-weather-variables*
 
+Plotting a histogram of hourly entries during rainy and not rainy days it is possible to clearly see how none of the two is distributed following a normal distribution. 
 
+![Histogram]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/exploratory.png)
+
+Therefore, when we test whether the difference between average entries during rainy and not rainy days is statistically significant, a non parametric test, such as the Mann-Whitney test, results more appropriate.
 ## References
 
 1. pandas [http://pandas.pydata.org/pandas-docs/stable/] (http://pandas.pydata.org/pandas-docs/stable/)
