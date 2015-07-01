@@ -19,7 +19,7 @@ On the other hand, the alternative hypothesis H1 states that the two probabiliti
 
 Rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278.The p-value resulting is of 0.02499. This being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
 
-## Statistical relationship between hourly entries and other variables
+## Relationship between hourly entries and other variables
 
 ## References
 
