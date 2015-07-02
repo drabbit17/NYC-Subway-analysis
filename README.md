@@ -21,6 +21,50 @@ Rainy days have a mean number of hourly entrances of 1105.446, while for non rai
 
 ## Relationship between hourly entries and other variables
 
+I opted for the use of the gradient descendent in producing estimates for Entries. Mainly because i had never used this methodology before and i wanted to experiment this. This methodology is suggested when dealing with models involving a very large number of variables, where OLS may not be able to find a solution. 
+I tested the model using several different features and then i opted for just some of them. 
+
+| Variable Considered   | Reason to include              | Final Model                  | Parameter value |
+| --------------------- |:------------------------------:| ----------------------------:|----------------------------:|
+| rain  | Rainy time should give people an incentive to use public transport | Not included, no improvement in the R squared||
+| precipi | The amount of precipitation may give a stronger incentive to use public transport | Not included, no improvement in the R squared||
+| `Hour` | During specific hours a larger number of people may need to use public transport| Included, improvements in the predicted R squared |*dummies*|
+| `UNIT` | It is likely that a large body of users uses the same turnstile everyday | Included, large improvements in the predicted R squared|*dummies*|
+| `weekday` | working days and not should help in predicting subway use | Included, improvements in the predicted R squared|*dummies*|
+
+An R squared of 0.50 is obtained. This measures give us an idea of what share of the overall variability in the dependent variable is explained by the fitted model. A value like that may mean that IF the relationship between dependent and independent variables is casual (something that we cannot tell just looking at the R squared), then we should be able to correctly predict/explain almost 40% of variability in the dependent values considered. This does not mean that we will correctly predict 50% of future values. 
+
+Moreover when we look at the residuals plotted against the fitted value we can notice a strange pattern. A possible explanation fot the unexpected linear relationship between residuals and predicted values may be the presence of fixed values for a subgroup of dependent variables ([reference](http://stats.stackexchange.com/questions/33165/diagonal-lines-in-residuals-vs-fitted-values-plot-for-multiple-regression)).
+
+![residual]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/residual.png)
+
+## Distribution of Hourly Entries
+
+I decided to investigate the change of average change in hourly entries under two main dimensions, the time and the geographic ones. 
+
+Below it is possible to see how the average number of hourly entrances changes according to different hours of the day and different weekdays. As it is possible to see there are four main peaks and there is not a consistent difference between raining days (red line) and non raining ones (blue line). 
+
+![plot3]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/plot3.png)
+
+The only slight difference is on monday, but this is due to an outlier in the "rain group" that with a very low value during a national holiday (30 of May, memorial day) pushes down monday mean value.
+
+![plot2]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/plot2.png)
+
+It is also interesting to look at how hourly entries and exits change during the day according to different turnstiles in different NYC areas. As we can see from the two plots below, in the "morning" (hours 8 and 12) Exits (red dots) are prevalent on Entries in Manhattan area, while in the areas around is the opposite (blue dots). 
+
+![MapMorning]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/MapMorning.png)
+
+This behaviour is reversed in "afternoon" hours (16 and 20). While those two observed behaviors may result obvious due to commuters, it is still interesting to see how Elmhurst and Jamaica areas are the ones where this is sharper.
+
+![MapAfternoon]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/MapAfternoon.png)
+
+## Conclusions and Reflections
+
 ## References
 
 1. pandas [http://pandas.pydata.org/pandas-docs/stable/] (http://pandas.pydata.org/pandas-docs/stable/)
