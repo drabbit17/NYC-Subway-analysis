@@ -113,8 +113,9 @@ test.rain = test.rain.replace([0,1], ['NoRain','Rain'])
 test.rain = pd.Categorical(test.rain) 
 test.DATEn = pd.to_datetime(test.DATEn)
 
-plot2 = ggplot(test, aes( x = 'DATEn', y = 'Entries', color='rain')) + geom_line() + geom_point() + scale_x_date()
-
+plot2 = ggplot(test, aes( x = 'DATEn', y = 'Entries', color='rain')) + geom_line() + geom_point() + scale_x_date() + \
+			ggtitle('Average Hourly Entries at Daily Level') + xlab('Date') + ylab('Entries') 
+			
 ggsave(filename = 'plot2.png', plot = plot2)
 
 #### plot 3 ####

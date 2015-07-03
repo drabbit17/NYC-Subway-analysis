@@ -32,7 +32,7 @@ I tested the model using several different features and then i opted for just so
 | `UNIT` | It is likely that a large body of users uses the same turnstile everyday | Included, large improvements in the predicted R squared|*dummies*|
 | `weekday` | working days and not should help in predicting subway use | Included, improvements in the predicted R squared|*dummies*|
 
-An R squared of 0.50 is obtained. This measures give us an idea of what share of the overall variability in the dependent variable is explained by the fitted model. A value like that may mean that IF the relationship between dependent and independent variables is casual (something that we cannot tell just looking at the R squared), then we should be able to correctly predict/explain almost 40% of variability in the dependent values considered. This does not mean that we will correctly predict 50% of future values. 
+A R squared of 0.50 is obtained. This measures give us an idea of what share of the overall variability in the dependent variable is explained by the fitted model. A value like that may mean that IF the relationship between dependent and independent variables is casual (something that we cannot tell just looking at the R squared), then we should be able to correctly predict/explain almost 40% of variability in the dependent values considered. This does not mean that we will correctly predict 50% of future values. 
 
 Moreover when we look at the residuals plotted against the fitted value we can notice a strange pattern. A possible explanation fot the unexpected linear relationship between residuals and predicted values may be the presence of fixed values for a subgroup of dependent variables ([reference](http://stats.stackexchange.com/questions/33165/diagonal-lines-in-residuals-vs-fitted-values-plot-for-multiple-regression)).
 
@@ -64,6 +64,10 @@ This behaviour is reversed in "afternoon" hours (16 and 20). While those two obs
 (https://github.com/drabbit17/NYC-Subway-analysis/blob/master/MapAfternoon.png)
 
 ## Conclusions and Reflections
+
+This analysis tried to study the behavior of NYC subway users in several ways. It started testing the statistical difference in number of entries between rainy and non rainy days, then there was an attempt to identify the features that are strong predictor through a gradient descendent model and finally different visualizzations focused on time and geographic variations variations. While the statistical test identified a difference in distribution of entries between rainy and non rainy days, the predictive model did not improve when the rain dummy was inserted and the visualizations showed no strong variation between rainy and non rainy days. The only slight difference may be due to a national holiday (Memorial day 30 of May) that behaving as an outlier reduced monday entries.
+
+Given the directions of the above mentioned evidences i would exclude that there is a significance difference in number of people riding the subway during rainy and non rainy days.
 
 ## References
 
