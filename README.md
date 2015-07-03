@@ -4,7 +4,7 @@
 
 The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are aggregated according to different sensors located within different Subway stations. The dataset also includes details regarding weather conditions. This makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf file *turnstile-weather-variables*
 
-## Exploratory Analysis and Statistical Testing 
+## Sect.1 Exploratory Analysis and Statistical Testing 
 
 Plotting a histogram of hourly entries during rainy and not rainy days it is possible to see clearly how none of the two is distributed following a normal distribution.
 
@@ -19,7 +19,7 @@ On the other hand, the alternative hypothesis H1 states that the two probabiliti
 
 Rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278.The p-value resulting is of 0.02499. This being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
 
-## Relationship between Hourly Entries and other Variables
+## Sect.2 Relationship between Hourly Entries and other Variables
 
 I opted for the use of the gradient descendent in producing estimates for Entries. Mainly because i had never used this methodology before and i wanted to experiment this. This methodology is suggested when dealing with models involving a very large number of variables, where OLS may not be able to find a solution. 
 I tested the model using several different features and then i opted for just some of them. 
@@ -39,9 +39,9 @@ Moreover when we look at the residuals plotted against the fitted value we can n
 ![residual]
 (https://github.com/drabbit17/NYC-Subway-analysis/blob/master/residual.png)
 
-## Distribution of Hourly Entries
+## Sect.3 Distribution of Hourly Entries
 
-I decided to investigate the change of average change in hourly entries under two main dimensions, the time and the geographic ones. 
+The first required visualization is included in Sect.1 in order to show how the rainy and non rainy values are distributed in a non-linear way. Regarding the second visualization I decided to investigate the change of average change in hourly entries under two main dimensions, the time and the geographic ones. 
 
 Below it is possible to see how the average number of hourly entrances changes according to different hours of the day and different weekdays. As it is possible to see there are four main peaks and there is not a consistent difference between raining days (red line) and non raining ones (blue line). 
 
@@ -63,7 +63,7 @@ This behaviour is reversed in "afternoon" hours (16 and 20). While those two obs
 ![MapAfternoon]
 (https://github.com/drabbit17/NYC-Subway-analysis/blob/master/MapAfternoon.png)
 
-## Conclusions and Reflections
+## Sect.4 and 5 Conclusions and Reflections
 
 This analysis tried to study the behavior of NYC subway users in several ways. It started testing the statistical difference in number of entries between rainy and non rainy days, then there was an attempt to identify the features that are strong predictor through a gradient descendent model and finally different visualizzations focused on time and geographic variations variations. While the statistical test identified a difference in distribution of entries between rainy and non rainy days, the predictive model did not improve when the rain dummy was inserted and the visualizations showed no strong variation between rainy and non rainy days. The only slight difference may be due to a national holiday (Memorial day 30 of May) that behaving as an outlier reduced monday entries.
 
