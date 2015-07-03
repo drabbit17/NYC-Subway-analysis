@@ -2,7 +2,7 @@
 
 ## Introduction and Data Description
 
-The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are colllected by different sensors located in different Subway stations. The dataset also includes details regarding weather conditions. The combination of those two information makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf file *turnstile-weather-variables.pdf*
+The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are collected by different sensors located in different Subway stations. The dataset also includes details regarding weather conditions. The combination of those two information makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf file *turnstile-weather-variables.pdf*
 
 ## Sect.1 Exploratory Analysis and Statistical Testing 
 
@@ -18,11 +18,11 @@ This test Null Hypothesis H0 assumes that randomly extracting one observation fr
 On the other hand, the alternative hypothesis H1 states that the two probabilities are different. 
 If we have reasons to assume that this probability is larger for one specific group of the two, then we should run a one-tail test (as this case may suggest). I opted for using 0.05 as p-critical value.
 
-Lookign at the data we see that rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278. The p-value resulting from the test is of 0.02499. This, being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
+Looking at the data we see that rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278. The p-value resulting from the test is of 0.02499. This, being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
 
 ## Sect.2 Relationship between Hourly Entries and other Variables
 
-In fitting a regression model to estimate hourly entries I opted for the use of the gradient descendent algorithm. Mainly because i had never used this methodology before and i wanted to try it. The us of this methodology is suggested when dealing with models involving a very large number of variables, where OLS may not be able to find a solution. So in this specific case an OLS approach would have probably been more correct.
+In fitting a regression model to estimate hourly entries I opted for the use of the gradient descendent algorithm. Mainly because i had never used this methodology before and i wanted to try it. The use of this methodology is suggested when dealing with models involving a very large number of variables, where OLS may not be able to find a solution. So in this specific case an OLS approach would have probably been more correct.
 
 I tested the model using several different features and then i opted for selecting just few of them. 
 
