@@ -135,6 +135,6 @@ test['weekday'] = pd.Series(pd.Categorical(test['weekday'], categories=['Mon','T
     
 # plot
 plot3 = ggplot(test, aes( x = 'Hour', y = 'Entries', color='rain')) + geom_line() + facet_wrap('weekday') + \
-    	scale_y_continuous(limits=(0,3700))
+    	scale_y_continuous(limits=(0,3700)) + ggtitle('Average Hourly Entries During Weekdays')
 
 ggsave(filename = 'plot3.png', plot = plot3)
