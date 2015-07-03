@@ -1,10 +1,10 @@
 # NYC-Subway-analysis
 
-## Introduction and data description
+## Introduction and Data Description
 
 The Turnstile weather dataset includes data regarding NYC subway use during the month of May 2011. Number of entries and exits are aggregated according to different sensors located within different Subway stations. The dataset also includes details regarding weather conditions. This makes possible to assess whether Subway use is affected by weather conditions and to what extent. A more detailed description of the variables available can be found in the pdf file *turnstile-weather-variables*
 
-## Exploratory analysis and statistical testing 
+## Exploratory Analysis and Statistical Testing 
 
 Plotting a histogram of hourly entries during rainy and not rainy days it is possible to see clearly how none of the two is distributed following a normal distribution.
 
@@ -19,7 +19,7 @@ On the other hand, the alternative hypothesis H1 states that the two probabiliti
 
 Rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278.The p-value resulting is of 0.02499. This being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
 
-## Relationship between hourly entries and other variables
+## Relationship between Hourly Entries and other Variables
 
 I opted for the use of the gradient descendent in producing estimates for Entries. Mainly because i had never used this methodology before and i wanted to experiment this. This methodology is suggested when dealing with models involving a very large number of variables, where OLS may not be able to find a solution. 
 I tested the model using several different features and then i opted for just some of them. 
