@@ -8,7 +8,7 @@ import datetime
 
 dfrm = pd.read_csv('turnstile_data_master_with_weather.csv')
 
-#### plot 1 ####
+#### plot 1 Histogram ####
 
 Rain = dfrm[dfrm.rain == 1]['ENTRIESn_hourly'].values
 NoRain = dfrm[dfrm.rain == 0]['ENTRIESn_hourly'].values
@@ -42,7 +42,7 @@ print "U test value is", U, " and p-value is ", pval
 
 # definition of dependent and independent variables
 # the model specification is here under features !
-# de facto only hour is useful
+# de facto only hour and weekdays are useful
 
 time = pd.to_datetime(pd.Series(dfrm.DATEn))
 dfrm['weekday'] = time.dt.dayofweek
@@ -59,7 +59,7 @@ values = dfrm['ENTRIESn_hourly']
 features_array = features.values
 values_array = values.values
 
-# normalization
+# it is needed to normalize the features before using them in the model
 means = np.mean(features, axis=0)
 std_devs = np.std(features, axis=0)
 normalized_features = (features - means) / std_devs
@@ -70,7 +70,7 @@ clf.fit(normalized_features, values_array)
 norm_intercept = clf.intercept_
 norm_params = clf.coef_
 
-# recover parameters
+# recover parameters resulting from the model 
 intercept = norm_intercept - np.sum(means * norm_params / std_devs)
 params = norm_params / std_devs
 
@@ -82,19 +82,17 @@ sstot = np.sum((values - ybar)**2)
 Rsquared = 1 - ssreg/sstot
 
 residuals = values - predictions
-
 res = pd.DataFrame( { 'residual' : residuals,
-						'predicted' : predictions})
+			'predicted' : predictions})
 
+# plot the residuals over the predicted values
 residual = ggplot(res, aes(x=predictions, y=residuals)) + \
     		geom_point() + xlab("Predicted") + ylab("Residual") + ggtitle("Residuals VS Predicted")
-    			
 ggsave(filename = 'residual.png', plot = residual)
 
-#### displayed values ####
+#### print parameters values ####
 
 string_feat = ['Hour']
-
 print ' '
 print "the intercept value is ", intercept
 print "While the coefficients are:" 
@@ -104,9 +102,8 @@ for i in np.arange(0,len(string_feat)):
 
 print 'Moreover, the R-squared is equal to', Rsquared
 
-####				####
-
 #### plot2 ####
+# here i want to plot distribution of entries according to day of the month
 
 test = pd.DataFrame({'Entries' : dfrm.groupby( ['DATEn', 'rain'] )['ENTRIESn_hourly'].mean()}).reset_index()
 test.rain = test.rain.replace([0,1], ['NoRain','Rain'])
@@ -119,8 +116,7 @@ plot2 = ggplot(test, aes( x = 'DATEn', y = 'Entries', color='rain')) + geom_line
 ggsave(filename = 'plot2.png', plot = plot2)
 
 #### plot 3 ####
-
-dfrm = pd.read_csv('turnstile_data_master_with_weather.csv')
+# here i want to plot the entries/exits distribution according to weekday
 
 time = pd.to_datetime(pd.Series(dfrm.DATEn))
 dfrm['weekday'] = time.dt.dayofweek
