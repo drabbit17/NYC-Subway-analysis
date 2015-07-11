@@ -14,9 +14,10 @@ Rain = dfrm[dfrm.rain == 1]['ENTRIESn_hourly'].values
 NoRain = dfrm[dfrm.rain == 0]['ENTRIESn_hourly'].values
 
 plt.figure()
-	
-plt.hist(NoRain, bins=250, color='b', alpha=0.7, label='NoRain')
-plt.hist(Rain, bins=250, color='g', alpha=0.7, label='Rain')
+
+binwidth = 250
+plt.hist(NoRain, bins=np.arange(min(NoRain), max(NoRain) + binwidth, binwidth), color='b', alpha=0.7, label='NoRain')
+plt.hist(Rain, bins=np.arange(min(Rain), max(Rain) + binwidth, binwidth), color='g', alpha=0.7, label='Rain')
 	
 plt.title("Histogram of hourly entries")
 plt.xlabel("hourly entries")
