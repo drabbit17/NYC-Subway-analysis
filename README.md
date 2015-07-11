@@ -15,10 +15,9 @@ Therefore, when testing whether the difference between average entries during ra
 1. All observations from the two groups are independent one from each other.
 2. The values are ordinal, one can always say which one is the larger among two observations.
 This test Null Hypothesis H0 assumes that randomly extracting one observation from the "rainy" sample, the probability that this is larger than another observation from the "non-rainy" sample equals the probability that a value extracted from the "non-rainy" sample exceeds the the "rainy" one. This implies that the two distributions should have the same distribution.
-On the other hand, the alternative hypothesis H1 states that the two probabilities are different. 
-If we have reasons to assume that this probability is larger for one specific group of the two, then we should run a one-tail test (as this case may suggest). I opted for using 0.05 as p-critical value.
+On the other hand, the alternative hypothesis H1 states that the two probabilities are different. If we have reasons to assume that this probability is larger for one specific group of the two, then we should run a one-tail test. Otherwise, if we are not sure about which group may prevail, or we just want to be more conservative, we should run two-tails test. I opted for a two-tail test with a p-critical value of 0.05.
 
-Looking at the data we see that rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278. The p-value resulting from the test is of 0.02499. This, being smaller than the p-critical value of 0.05 is a statistically significant result leading us to reject the Null Hypothesis that the two distributions are equal.
+Looking at the data we see that rainy days have a mean number of hourly entrances of 1105.446, while for non rainy days the value is of 1090.278. The p-value resulting, representative of a one-tail test, is of 0.02499. So, to obtain the p-value for the two-tails test it is enough to multiply this number by two. The resulting number is almost equal to 0.05, therefore, the test is barely statistically significant and points to the rejection of the Null Hp that the two distributions are equal.
 
 ## Sect.2 Relationship between Hourly Entries and other Variables
 
@@ -34,7 +33,7 @@ I tested the model using several different features and then i opted for selecti
 | `UNIT` | It is likely that a large body of users uses the same turnstile everyday | Included, large improvements in the predicted R squared|*dummies*|
 | `weekday` | working days and not should help in predicting subway use | Included, improvements in the predicted R squared|*dummies*|
 
-A R squared of 0.50 is obtained. This measures give us an idea of what share of the overall variability in the dependent variable is explained by the fitted model. A value like that may imply that IF the relationship between dependent and independent variables is casual (something that we cannot tell just looking at the R squared), then we should be able to correctly predict/explain almost 50% of variability in the dependent values considered. This does not mean that the model would correctly predict 50% of future values, but just that would explain around 50% of their variability. 
+Using the model specified in the table a R squared of 0.5025 is obtained. Including the dummy rain in the model the obtained R square was equal to 0.5001, bringing no improvements. The R square gives us an idea of what share of the overall variability in the dependent variable is explained by the fitted model. A value like that may imply that IF the relationship between dependent and independent variables is casual (something that we cannot tell just looking at the R squared), then we should be able to correctly predict/explain almost 50% of variability in the dependent values considered. This does not mean that the model would correctly predict 50% of future values, but just that would explain around 50% of their variability. 
 
 Moreover, if we look at the residuals plotted against the fitted value we notice a strange pattern. A possible explanation for the unexpected linear relationship between residuals and predicted values may be given by the presence of fixed values for a subgroup of dependent variables, such as the zeros at the beginning of the day. ([reference](http://stats.stackexchange.com/questions/33165/diagonal-lines-in-residuals-vs-fitted-values-plot-for-multiple-regression)).
 
@@ -52,10 +51,10 @@ Below it is possible to see how the average number of hourly entrances changes a
 
 The only slight difference is on monday, but this is probably due to an outlier in the "rain group" that with a very low value during a national holiday (30 of May, Memorial day) pushes down monday mean value.
 
-![plot2]
-(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/plot2.png)
+![BarPlot]
+(https://github.com/drabbit17/NYC-Subway-analysis/blob/master/BarPlot.png)
 
-It is also interesting to look at how hourly entries and exits change during the day according to different turnstiles in different NYC areas. As we can see from the two plots below, in the "morning" (hours 8 and 12) Exits (red dots) are prevalent on Entries in Manhattan area, while in the areas around it is the opposite (blue dots). 
+It is also interesting to look at how hourly entries and exits change during the day (morning, afternoon and night) according to different turnstiles in different NYC areas (UNIT). Obviously, for each turnstile we have both entry and exit data. In order to have those two distinct measures aggregated in a single one i changed the sign for exit values to negative and then computed the overall mean for traffic (both exits and entries) at turnstile level. As we can see from the two plots below, in the "morning" (hours 8 and 12) Exits (red color) are prevalent on Entries in Manhattan area, while in the areas around is the opposite (blue).
 
 ![MapMorning]
 (https://github.com/drabbit17/NYC-Subway-analysis/blob/master/MapMorning.png)
