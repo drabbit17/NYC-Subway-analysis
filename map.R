@@ -54,6 +54,10 @@ SumForUnit <- summarise(group_units, Enter = mean(ENTRIESn_hourly), Exit = mean(
 stacked <- data.frame(melt(data.frame(SumForUnit), id.vars=c("UNIT","Lat", "Lon", "intraday")))
 group_units2 <- group_by(stacked, UNIT, intraday)
 SumForUnit2 <- summarise(group_units2, value = mean(value), Lat = mean(Lat), Lon = mean(Lon))
+<<<<<<< HEAD
+names(SumForUnit2)[names(SumForUnit2) == 'value'] <- 'Frequency'
+
+=======
 names(SumForUnit2)[names(SumForUnit2) == 'use'] <- 'Frequency'
 
 # define colors
@@ -61,6 +65,7 @@ cols <- colorRampPalette(brewer.pal(11,"RdYlGn"))(100)
 
 
 
+>>>>>>> e8032540987dd00f63ff49430d0e577e0bc07b92
 stackedmorning <- filter(SumForUnit2, intraday == "morning")
 png(filename = "MapMorning.png", width = 1080, height = 720)
 NYmap + geom_point(aes(x = Lon, y = Lat, color = Frequency), alpha = 7/10, size=5, data=stackedmorning) +
