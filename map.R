@@ -54,6 +54,7 @@ SumForUnit <- summarise(group_units, Enter = mean(ENTRIESn_hourly), Exit = mean(
 stacked <- data.frame(melt(data.frame(SumForUnit), id.vars=c("UNIT","Lat", "Lon", "intraday")))
 group_units2 <- group_by(stacked, UNIT, intraday)
 SumForUnit2 <- summarise(group_units2, value = mean(value), Lat = mean(Lat), Lon = mean(Lon))
+
 names(SumForUnit2)[names(SumForUnit2) == 'value'] <- 'Frequency'
 
 stackedmorning <- filter(SumForUnit2, intraday == "morning")
